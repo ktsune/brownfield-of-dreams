@@ -1,11 +1,22 @@
 class DashboardFacade
   def initialize(user)
-    @service = GithubService.new(user.token)
+    if user.token
+      @service = GithubService.new(user)
+      @auth = true
+    else
+      @auth = false
+    end
     @friendships = user.friendship_uids
   end
 
+  def is_auth?; @auth end
+
   def repos
-    @_repos ||= get_repos
+    if @auth
+      @_repos ||= get_repos
+    else
+      []
+    end
   end
 
   def followers
