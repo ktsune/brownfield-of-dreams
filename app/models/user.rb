@@ -17,8 +17,4 @@ class User < ApplicationRecord
     }
     self.save
   end
-
-  def friendship_uids
-    User.joins(:friendships).select('users.uid').where(friendships: {user_id: id})
-  end
 end
