@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 feature 'Github Repos' do
-  scenario 'User can see 5 repos' do
-    user = create(:user)
+  before :each do
+    user = create(:user, uid: '1', token: 'yeet')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
 
+  end
+  scenario 'User can see 5 repos' do
     VCR.use_cassette("synopsis") do
       visit '/dashboard'
     end
@@ -21,9 +24,6 @@ feature 'Github Repos' do
 
   feature 'Friendships' do
     scenario 'User can see friends' do
-      user = create(:user)
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
       friend_1 = create(:user)
       friend_2 = create(:user)
       friend_3 = create(:user)
@@ -37,6 +37,28 @@ feature 'Github Repos' do
       expect(page).to have_content(friend_1.first_name)
       expect(page).to have_content(friend_2.first_name)
       expect(page).to have_content(friend_3.first_name)
+    end
+
+    scenario 'User sees add friend button' do
+      user_1 = create(:user)
+      user_2 = create(:user, uid: '4')
+      user_3 = create(:user, uid: '5000')
+
+      Friendship.create!(user_id: user.id, friend_id: user_2.id)
+
+      
+
+      visit '/dashboard'
+
+      within("#followers-#{}") do
+        expect(page).to_not have_content('Add Friend')
+      end
+      within("#followers-#{}") do
+        expect(page).to_not have_content('Add Friend')
+      end
+      within("#followers-#{}") do
+        expect(page).to have_content('Add Friend')
+      end
     end
   end
 end
