@@ -6,8 +6,9 @@ class DashboardFacade
     else
       @auth = false
     end
-    @friendships = user.friendship_uids
+    @friends = user.friends
   end
+  attr_reader :friends
 
   def is_auth?; @auth end
 
@@ -22,7 +23,7 @@ class DashboardFacade
   def followers
     @_followers ||= get_followers
   end
-  
+
   def following
     @_following ||= get_following
   end
@@ -38,13 +39,13 @@ class DashboardFacade
 
   def get_followers
     service.fetch_followers.map do |raw_follower|
-      Github::Handle.new(raw_follower, @friendships)
+      Github::Handle.new(raw_follower, @friend_uids)
     end
   end
 
   def get_following
     service.fetch_following.map do |raw_following|
-      Github::Handle.new(raw_following, @friendships)
+      Github::Handle.new(raw_following, @friend_uids)
     end
   end
 end
