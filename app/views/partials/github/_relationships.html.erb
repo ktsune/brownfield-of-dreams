@@ -1,12 +1,14 @@
 <ul>
   <h3>Followers</h3>
-  <% facade.followers.each do |handle| %>
-    <li><a href='<%= handle.path %>'><%= handle.name %></a></li>
+  <% facade.followers.each do |github_user| %>
+    <li><a href='<%= github_user.path %>'><%= github_user.name %></a></li>
+    <% if friends.any? {|friend| friend.uid == github_user.uid}
+    <%= button_to "Add Friend", create_friend_path(github_user.uid) %>
   <% end %>
 </ul>
 <ul>
   <h3>Following</h3>
-  <% facade.following.each do |handle| %>
-    <li><a href='<%= handle.path %>'><%= handle.name %></a></li>
+  <% facade.following.each do |github_user| %>
+    <li><a href='<%= github_user.path %>'><%= github_user.name %></a></li>
   <% end %>
 </ul>

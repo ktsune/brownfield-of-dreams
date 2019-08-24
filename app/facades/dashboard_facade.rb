@@ -39,13 +39,13 @@ class DashboardFacade
 
   def get_followers
     service.fetch_followers.map do |raw_follower|
-      Github::Handle.new(raw_follower, @friend_uids)
+      Github::User.new(raw_follower, @friend_uids)
     end
   end
 
   def get_following
     service.fetch_following.map do |raw_following|
-      Github::Handle.new(raw_following, @friend_uids)
+      Github::User.new(raw_following, @friend_uids)
     end
   end
 end

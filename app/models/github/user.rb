@@ -1,5 +1,5 @@
 module Github
-  class Handle
+  class User
     attr_reader :path, :name
     def initialize(data, user_friendships)
       @path = data[:html_url]
