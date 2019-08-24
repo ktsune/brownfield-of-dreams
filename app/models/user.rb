@@ -9,8 +9,7 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
-  def authenticate(data)
-    binding.pry
+  def connect(data)
     self.attributes = {
       uid: data.uid.to_s,
       handle: data.info.nickname,

@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def update
-    current_user.authenticate(request.env["omniauth.auth"])
+    current_user.connect(request.env["omniauth.auth"])
     flash[:success] = 'u did it'
     redirect_to dashboard_path
   end
