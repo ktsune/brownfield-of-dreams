@@ -1,12 +1,10 @@
 module Github
   class User
-    attr_reader :path, :name
-    def initialize(data, user_friendships)
+    attr_reader :path, :name, :uid
+    def initialize(data)
       @path = data[:html_url]
       @name = data[:login]
-      @friend = user_friendships.include? data[:id]
+      @uid = data[:id].to_s
     end
-
-    def friend?; @friend end
   end
 end

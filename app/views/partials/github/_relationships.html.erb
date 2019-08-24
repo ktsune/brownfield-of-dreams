@@ -2,8 +2,9 @@
   <h3>Followers</h3>
   <% facade.followers.each do |github_user| %>
     <li><a href='<%= github_user.path %>'><%= github_user.name %></a></li>
-    <% if friends.any? {|friend| friend.uid == github_user.uid}
-    <%= button_to "Add Friend", create_friend_path(github_user.uid) %>
+    <% if User.find_by(uid: github_user.uid) && !facade.friends.any? {|friend| friend.uid == github_user.uid} %>
+      <%=  button_to "Add Friend", create_friend_path(uid: github_user.uid) %>
+    <% end %>
   <% end %>
 </ul>
 <ul>

@@ -12,9 +12,11 @@
   </section>
   <section>
     <h1>Friends</h1>
+    <ul>
       <% facade.friends.each do |friend| %>
-        <%= friend.first_name %>
+        <li><%= friend.first_name %></li>
       <% end %>
+    </ul>
   </section>
   <% if facade.is_auth? %>
     <%= render partial: 'partials/github/repos', locals: {facade: facade} %>
