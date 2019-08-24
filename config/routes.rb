@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/friend', to: "friend#create", as: 'create_friend'
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
