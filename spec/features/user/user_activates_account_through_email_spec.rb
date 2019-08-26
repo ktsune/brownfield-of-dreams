@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'User Email' do
   scenario 'user can activate their account through email' do
-    user = User.create(first_name: 'Aurie', last_name: 'Auriest', password: 'password')
 
     visit '/'
     click_on 'Register'
@@ -11,6 +10,7 @@ feature 'User Email' do
 
     fill_in :first_name, with: 'Aurie'
     fill_in :last_name, with: 'Auriest'
+    fill_in :email, with: 'auriest@aurie.com'
     fill_in :password, with: 'password'
     fill_in :password_confirmation, with: 'password'
     click_on 'Submit'
