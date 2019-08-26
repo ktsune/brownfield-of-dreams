@@ -7,11 +7,33 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+
   <section>
     <h1>Bookmarked Segments</h1>
+      <ul>
+        <% current_user.ordered_tutorials.each do |tutorial| %>
+          <li>
+            <%= tutorial.title %>
+              <ul>
+                <% tutorial.videos.each do |video| %>
+                  <li><%= video.title %></li>
+                <% end %>
+              </ul>
+          </li>
+        <% end %>
+      </ul>
+  </section>
+
+  <section>
+    <h1>Friends</h1>
+    <ul>
+      <% facade.friends.each do |friend| %>
+        <li><%= friend.first_name %></li>
+      <% end %>
+    </ul>
   </section>
   <% if facade.is_auth? %>
-    <%= render partial: 'partials/github/repos', locals: {facade: facade} %>  
+    <%= render partial: 'partials/github/repos', locals: {facade: facade} %>
     <%= render partial: 'partials/github/relationships', locals: {facade: facade} %>
   <% else %>
     <%= button_to "Login", github_login_path %>

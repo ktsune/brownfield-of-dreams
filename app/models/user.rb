@@ -9,8 +9,7 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
-  def authenticate(data)
-    binding.pry
+  def connect(data)
     self.attributes = {
       uid: data.uid.to_s,
       handle: data.info.nickname,
@@ -19,7 +18,9 @@ class User < ApplicationRecord
     self.save
   end
 
-  def friendship_uids
-    User.joins(:friendships).select('users.uid').where(friendships: {user_id: id})
+  def ordered_tutorials
+    Tutorial.includes(videos: :user_videos)
+    .where(user_videos: {user_id: self.id})
+    .order("videos.position asc")
   end
 end
