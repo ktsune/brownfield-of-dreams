@@ -7,9 +7,17 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+
   <section>
     <h1>Bookmarked Segments</h1>
+      <ul>
+        <% current_user.videos.each do |video| %>
+          <h3><%= video.thumbnail %></h3>
+          <li> <%= video.title %></li>
+        <% end %>
+      </ul>
   </section>
+
   <section>
     <h1>Friends</h1>
     <ul>

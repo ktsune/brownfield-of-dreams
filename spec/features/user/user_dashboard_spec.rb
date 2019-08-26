@@ -1,13 +1,10 @@
 require 'rails_helper'
 
 feature 'Github Repos' do
-  before :each do
-    user = create(:user, uid: '1', token: 'yeet')
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-  end
-
-  end
   scenario 'User can see 5 repos' do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     VCR.use_cassette("synopsis") do
       visit '/dashboard'
     end
@@ -22,43 +19,12 @@ feature 'Github Repos' do
     end
   end
 
-  feature 'Friendships' do
-    scenario 'User can see friends' do
-      friend_1 = create(:user)
-      friend_2 = create(:user)
-      friend_3 = create(:user)
+  scenario 'User can see bookmarks sectioned by tutorial type and ordered by position' do
+    user = create(:user)
+    video = create(:video)
+    user_video = create(:user_video, user_id: user.id, video_id: video.id)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      Friendship.create!(user_id: user.id, friend_id: friend_1.id)
-      Friendship.create!(user_id: user.id, friend_id: friend_2.id)
-      Friendship.create!(user_id: user.id, friend_id: friend_3.id)
-
-      visit '/dashboard'
-
-      expect(page).to have_content(friend_1.first_name)
-      expect(page).to have_content(friend_2.first_name)
-      expect(page).to have_content(friend_3.first_name)
-    end
-
-    scenario 'User sees add friend button' do
-      user_1 = create(:user)
-      user_2 = create(:user, uid: '4')
-      user_3 = create(:user, uid: '5000')
-
-      Friendship.create!(user_id: user.id, friend_id: user_2.id)
-
-      
-
-      visit '/dashboard'
-
-      within("#followers-#{}") do
-        expect(page).to_not have_content('Add Friend')
-      end
-      within("#followers-#{}") do
-        expect(page).to_not have_content('Add Friend')
-      end
-      within("#followers-#{}") do
-        expect(page).to have_content('Add Friend')
-      end
-    end
+    expect(page).to have_content(video.title)
   end
 end

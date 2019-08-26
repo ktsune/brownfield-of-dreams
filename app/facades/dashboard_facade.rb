@@ -20,6 +20,10 @@ class DashboardFacade
     end
   end
 
+  def video_section
+    
+  end
+
   def followers
     @_followers ||= get_followers
   end
