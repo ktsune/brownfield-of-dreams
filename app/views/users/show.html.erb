@@ -11,9 +11,15 @@
   <section>
     <h1>Bookmarked Segments</h1>
       <ul>
-        <% current_user.videos.each do |video| %>
-          <h3><%= video.thumbnail %></h3>
-          <li> <%= video.title %></li>
+        <% current_user.ordered_tutorials.each do |tutorial| %>
+          <li>
+            <%= tutorial.title %>
+              <ul>
+                <% tutorial.videos.each do |video| %>
+                  <li><%= video.title %></li>
+                <% end %>
+              </ul>
+          </li>
         <% end %>
       </ul>
   </section>
