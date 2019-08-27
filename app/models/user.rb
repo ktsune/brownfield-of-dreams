@@ -11,6 +11,10 @@ class User < ApplicationRecord
   enum role: %i[default admin]
   has_secure_password
 
+  def activate
+    self.update_attribute(:activate, true)
+  end 
+
   def connect(data)
     self.attributes = {
       uid: data.uid.to_s,
