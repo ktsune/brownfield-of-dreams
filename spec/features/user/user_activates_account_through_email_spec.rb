@@ -19,4 +19,13 @@ feature 'User Email' do
     expect(page).to have_content("Logged in as #{user.first_name}")
     expect(page).to have_content("This account has not yet been activated. Please check your email.")
   end
+
+  scenario 'user can visit url explicitly' do
+    user = create(:user)
+
+    visit "/activate?user_id=#{user.id}"
+
+    expect(current_path).to eq('/dashboard')
+    expect(user.activated).to eq(true)
+  end
 end
