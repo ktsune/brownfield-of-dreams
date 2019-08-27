@@ -24,4 +24,9 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  it 'sends an email' do
+    expect { subject.activate }
+      .to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
 end

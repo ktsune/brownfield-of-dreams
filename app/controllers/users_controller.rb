@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+
   def show
     render locals: { facade: DashboardFacade.new(current_user) }
   end
@@ -10,14 +11,21 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
+    user = User.create(user_params.merge({uuid: SecureRandom.uuid}))
     if user.save
+      UserMailer.activate(user).deliver_now
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
       flash[:error] = 'That username is already in use.'
       render :new
     end
+  end
+
+  def update
+    User.find_by(uuid: params[:uuid]).activate
+
+    redirect_to dashboard_path
   end
 
   private
