@@ -42,7 +42,9 @@ Rails.application.routes.draw do
   # Is this being used?
   get '/video', to: 'video#show'
 
-  resources :users, only: %i[new create update edit]
+  get '/activate', to: 'users#update'
+
+  resources :users, only: %i[new create edit]
 
   resources :tutorials, only: %i[show index] do
     resources :videos, only: %i[show index]
