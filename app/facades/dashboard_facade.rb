@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DashboardFacade
   def initialize(user)
     if user.token
@@ -10,7 +12,9 @@ class DashboardFacade
   end
   attr_reader :friends
 
-  def is_auth?; @auth end
+  def is_auth?
+    @auth
+  end
 
   def repos
     if @auth
@@ -29,6 +33,7 @@ class DashboardFacade
   end
 
   private
+
   attr_reader :service
 
   def get_repos

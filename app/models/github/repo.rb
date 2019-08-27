@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Github
   class Repo
     attr_reader :full_path, :path
