@@ -12,8 +12,8 @@ class User < ApplicationRecord
   has_secure_password
 
   def activate
-    self.update_attribute(:activate, true)
-  end 
+    self.update_attribute(:activated, true)
+  end
 
   def connect(data)
     self.attributes = {
