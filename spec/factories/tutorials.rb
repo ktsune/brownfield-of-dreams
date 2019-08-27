@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :tutorial do
     title { Faker::Name.unique.name }
@@ -7,6 +9,6 @@ FactoryBot.define do
     classroom { false }
     after :create do |tutorial|
       create_list :video, 5, tutorial: tutorial
-    end 
+    end
   end
 end

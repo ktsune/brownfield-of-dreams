@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FriendController < ApplicationController
   def create
     friend = User.find_by(uid: params[:uid])
