@@ -95,3 +95,32 @@ feature 'Invites' do
     expect(page).to have_content('HandleBloke doesn\'t have an email associated with their account.')
   end
 end
+
+feature 'Friendships' do
+  scenario 'User can add a friend if the person has a github account' do
+    user = create(:user)
+    handle = 'HandleBloke'
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    WebMock.disable_net_connect!
+    stub_request(:get, "https://api.github.com/users/#{handle}")
+      .to_return(status: 200, headers: {}, body: '{"handle":"HandleBloke"}')
+
+    visit dashboard_path
+    click_on 'Add Friend'
+
+    expect(current_path).to eq(dashboard_path)
+  end
+
+  scenario 'User cannot add a friend if the person does not have a github account' do
+    user = create(:user)
+    handle = 'HandleBloke'
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    WebMock.disable_net_connect!
+    stub_request(:get, "https://api.github.com/users/#{handle}")
+      .to_return(status: 200, headers: {}, body: '{"handle":null}')
+
+    visit dashboard_path
+
+    expect(current_path).to eq(dashboard_path)
+  end
+end
