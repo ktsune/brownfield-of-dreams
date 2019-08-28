@@ -5,11 +5,11 @@ module YouTube
     attr_reader :thumbnail
 
     def initialize(data = {})
-      if data[:items].empty?
-        @thumbnail = ''
-      else
-        @thumbnail = data[:items].first[:snippet][:thumbnails][:high][:url]
-      end
+      @thumbnail = if data[:items].empty?
+                     ''
+                   else
+                     data[:items].first[:snippet][:thumbnails][:high][:url]
+                   end
     end
 
     def self.by_id(id)

@@ -15,7 +15,7 @@ class Admin::VideosController < Admin::BaseController
       tutorial  = Tutorial.find(params[:tutorial_id])
       thumbnail = YouTube::Video.by_id(new_video_params[:video_id]).thumbnail
       position  = tutorial.videos.count + 1
-      video     = tutorial.videos.new(new_video_params.merge({thumbnail: thumbnail, position: position}))
+      video     = tutorial.videos.new(new_video_params.merge(thumbnail: thumbnail, position: position))
 
       video.save
 
