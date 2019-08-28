@@ -39,7 +39,7 @@
   <% end %>
   <section>
     <h1>Invite Someone!</h1>
-    <%= form_tag '/invite' do %>
+    <%= form_tag invite_path do %>
       <%= label_tag 'handle', 'Enter a Github Handle' %>
       <%= text_field_tag 'handle' %>
 

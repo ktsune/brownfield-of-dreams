@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   resources :users, only: %i[create update edit]
   post '/friend', to: 'friend#create', as: 'create_friend'
+  post '/invite', to: 'invite#create'
 
   # Sessions
   get '/login', to: 'sessions#new'

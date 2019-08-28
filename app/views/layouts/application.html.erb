@@ -17,10 +17,9 @@
       <div class="flash-message">
         <% flash.each do |name, msg| %>
           <div class='flash-message'>
-            <div class='flash-bar <%="#{name}-bar"%>'>
-              <div class='flash-internal <%="#{name}-internal"%>'>
-                <em><%= msg %></em>
-              </div>
+            <div class='flash-bar <%="#{name}-bar"%>'></div>
+            <div class='flash-internal <%="#{name}-internal"%>'>
+              <em><%= msg %></em>
             </div>
           </div>
         <% end %>
