@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_223021) do
     t.string "uid"
     t.string "handle"
     t.string "token"
-    t.boolean "activated"
+    t.boolean "activated", default: false
     t.string "uuid"
     t.index ["email"], name: "index_users_on_email"
   end

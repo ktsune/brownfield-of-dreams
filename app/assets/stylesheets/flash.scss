@@ -1,0 +1,41 @@
+.flash-message {
+  margin: auto;
+  margin-top: 0.5rem;
+  width: 75%;
+  height: 52px;
+}
+
+.flash-message::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.flash-internal {
+  float: left;
+  padding: 8px 16px 8px 16px;
+  font-size: 24px;
+}
+
+.flash-bar {
+  height: 100%;
+  float: left;
+  width: 0.5rem;
+}
+
+.success-bar {
+  background: #2fb6b6;
+}
+
+.success-internal {
+  background: #71dada;
+  color: #fff;
+}
+
+.error-bar {
+  background: #ff6666;
+}
+
+.error-internal {
+  background: #ffcccc;
+}

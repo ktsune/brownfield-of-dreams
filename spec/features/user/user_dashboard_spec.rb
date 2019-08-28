@@ -61,3 +61,39 @@ feature 'Bookmarks' do
     end
   end
 end
+
+feature 'Invites' do
+  scenario 'User sends an invite to someone with an email' do
+    user = create(:user)
+    handle = 'HandleBloke'
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    WebMock.disable_net_connect!
+    stub_request(:get, "https://api.github.com/users/#{handle}")
+      .to_return(status: 200, headers: {}, body: '{"email":"e@mail.com"}')
+
+    visit dashboard_path
+
+    fill_in 'handle', with: 'HandleBloke'
+    click_on 'Send Invite'
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content('Sent an invite to HandleBloke')
+  end
+
+  scenario 'User sends an invite to someone without an email' do
+    user = create(:user)
+    handle = 'HandleBloke'
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    WebMock.disable_net_connect!
+    stub_request(:get, "https://api.github.com/users/#{handle}")
+      .to_return(status: 200, headers: {}, body: '{"email":null}')
+
+    visit dashboard_path
+
+    fill_in 'handle', with: 'HandleBloke'
+    click_on 'Send Invite'
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content('HandleBloke doesn\'t have an email associated with their account.')
+  end
+end

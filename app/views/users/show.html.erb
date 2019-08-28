@@ -1,7 +1,6 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
-  <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -36,6 +35,15 @@
     <%= render partial: 'partials/github/repos', locals: {facade: facade} %>
     <%= render partial: 'partials/github/relationships', locals: {facade: facade} %>
   <% else %>
-    <%= button_to "Login", github_login_path %>
+    <%= button_to 'Connect to GitHub', github_login_path, class: 'btn btn-primary mb1 bg-teal' %>
   <% end %>
+  <section>
+    <h1>Invite Someone!</h1>
+    <%= form_tag invite_path do %>
+      <%= label_tag 'handle', 'Enter a Github Handle' %>
+      <%= text_field_tag 'handle' %>
+
+      <%= submit_tag 'Send Invite' %>
+    <% end %>
+  </section>
 </section>

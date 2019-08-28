@@ -3,8 +3,8 @@
 class GithubService
   def initialize(user)
     @conn = Faraday.new(url: 'https://api.github.com/') do |f|
-       f.headers['Authorization'] = "token #{ENV['GITHUB_TOKEN']}"
-      #f.basic_auth user.handle, user.token
+      # f.headers['Authorization'] = "token #{ENV['GITHUB_TOKEN']}"
+      f.basic_auth user.handle, user.token
       f.adapter Faraday.default_adapter
     end
   end
@@ -19,6 +19,10 @@ class GithubService
 
   def fetch_following
     fetch('/user/following')
+  end
+
+  def fetch_email(handle)
+    fetch("/users/#{handle}")[:email]
   end
 
   private
