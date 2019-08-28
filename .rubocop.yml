@@ -26,3 +26,5 @@ Naming/AccessorMethodName:
   Enabled: false
 Metrics/AbcSize:
   Enabled: false
+Style/Semicolon:
+  Enabled: false

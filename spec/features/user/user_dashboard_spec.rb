@@ -96,5 +96,4 @@ feature 'Invites' do
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('HandleBloke doesn\'t have an email associated with their account.')
   end
-
 end

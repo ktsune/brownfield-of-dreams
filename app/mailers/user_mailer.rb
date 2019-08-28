@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class UserMailer < ApplicationMailer
   def activate(user)
     @user = user
-    mail(to: user.email, subject: "Activate your account.")
+    mail(to: user.email, subject: 'Activate your account.')
   end
 
   def invite(user, handle, email)

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'securerandom'
 
 class User < ApplicationRecord
@@ -13,7 +14,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def activate
-    self.update_attribute(:activated, true)
+    update_attribute(:activated, true)
   end
 
   def connect(data)
