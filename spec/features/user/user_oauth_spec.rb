@@ -28,11 +28,27 @@ feature 'User authenticates with oauth' do
     visit '/dashboard'
 
     expect(current_path).to eq('/dashboard')
-    expect(page).to have_no_css('.repo')
 
-    click_on 'Login'
+    click_on 'Connect to GitHub'
 
-    expect(current_path).to eq('/dashboard')
-    expect(page).to have_css('.repo')
+    expect(page).to have_content('Github')
+
+    within('.followers') do
+      within(first('.follower')) do
+        expect(page).to have_css('.name')
+      end
+    end
+
+    within('.repos') do
+      within(first('.repo')) do
+        expect(page).to have_css('.name')
+      end
+    end
+
+    within('.following') do
+      within(first('.follow')) do
+        expect(page).to have_css('.name')
+      end
+    end
   end
 end

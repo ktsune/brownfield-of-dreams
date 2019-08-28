@@ -12,12 +12,10 @@ feature 'Github Repos' do
     end
 
     expect(current_path).to eq(dashboard_path)
+    expect(page).to have_css('.repo', count: 5)
 
-    within('#repos') do
-      expect(page).to have_css('.repo', count: 5)
-      within(first('.repo')) do
-        expect(page).to have_link('JoriPeterson/battleship')
-      end
+    within(first('.repo')) do
+      expect(page).to have_link('.name')
     end
   end
 end
