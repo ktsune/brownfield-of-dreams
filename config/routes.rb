@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # Users
   get '/register', to: 'users#new'
+  get '/activate', to: 'users#update'
   get '/dashboard', to: 'users#show'
   resources :users, only: %i[create update edit]
   post '/friend', to: 'friend#create', as: 'create_friend'

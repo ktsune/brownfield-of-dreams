@@ -19,7 +19,7 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.from).to eq(['noreply@turingtutorials.com'])
     end
 
-    it 'assigns @confirmation_url' do
+    it 'assigns uuid' do
       expect(mail.body.encoded)
         .to match("http://localhost:3000/activate?uuid=#{user.uuid}")
     end
