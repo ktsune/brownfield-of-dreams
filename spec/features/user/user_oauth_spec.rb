@@ -8,7 +8,7 @@ feature 'User authenticates with oauth' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
-  scenario 'through github' do
+  xscenario 'through github' do
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
       data: {
         provider: 'github',

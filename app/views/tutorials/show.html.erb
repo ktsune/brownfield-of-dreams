@@ -19,9 +19,9 @@
       <h3><%= @facade.current_video.title %></h3>
       <div class="bookmarks-btn">
         <% if current_user %>
-        <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
+          <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
         <% else %>
-        <%= link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
+          <h3 style='margin-top: 0'>You must <%= link_to 'login', login_path %> or <%= link_to 'register', register_path %> to bookmark videos.</h3>
         <% end %>
       </div>
     </div>
