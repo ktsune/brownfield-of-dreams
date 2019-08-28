@@ -38,4 +38,13 @@
   <% else %>
     <%= button_to "Login", github_login_path %>
   <% end %>
+  <section>
+    <h1>Invite Someone!</h1>
+    <%= form_tag '/invite' do %>
+      <%= label_tag 'handle', 'Enter a Github Handle' %>
+      <%= text_field_tag 'handle' %>
+
+      <%= submit_tag 'Send Invite' %>
+    <% end %>
+  </section>
 </section>
