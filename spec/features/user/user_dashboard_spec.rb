@@ -4,7 +4,7 @@ require 'rails_helper'
 
 feature 'Github Repos' do
   scenario 'User can see 5 repos' do
-    user = create(:user)
+    user = create(:user, token: '12345')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     VCR.use_cassette('synopsis') do
