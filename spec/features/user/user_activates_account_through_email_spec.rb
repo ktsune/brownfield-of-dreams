@@ -25,7 +25,6 @@ feature 'User Email' do
     user = create(:user, uuid: '12345')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    binding.pry
     visit "/activate?uuid=#{user.uuid}"
 
     expect(current_path).to eq('/dashboard')

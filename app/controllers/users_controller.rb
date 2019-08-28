@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params.merge(uuid: SecureRandom.uuid))
-    binding.pry
     if user.save
       UserMailer.activate(user).deliver_now
       session[:user_id] = user.id
