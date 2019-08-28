@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'sessions#update'
-  delete '/logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
 
   # Bookmarks
   resources :user_videos, only: %i[create destroy]
