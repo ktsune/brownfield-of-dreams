@@ -13,11 +13,9 @@ feature 'Github Repos' do
 
     expect(current_path).to eq(dashboard_path)
 
-    within('#repos') do
-      expect(page).to have_css('.repo', count: 5)
-      within(first('.repo')) do
-        expect(page).to have_link('JoriPeterson/battleship')
-      end
+    expect(page).to have_css('.repo', count: 5)
+    within(first('.repo')) do
+      expect(page).to have_link('JoriPeterson/battleship')
     end
   end
 end
@@ -26,8 +24,11 @@ feature 'Bookmarks' do
   scenario 'User can see bookmarks sectioned by tutorial type and ordered by position' do
     user = create(:user)
     tutorial1 = create(:tutorial)
+    create_list(:video, 5, tutorial: tutorial1)
     tutorial2 = create(:tutorial)
+    create_list(:video, 5, tutorial: tutorial2)
     tutorial3 = create(:tutorial)
+    create_list(:video, 5, tutorial: tutorial3)
     create(:user_video, user_id: user.id, video_id: tutorial1.videos[1].id)
     create(:user_video, user_id: user.id, video_id: tutorial1.videos[2].id)
 

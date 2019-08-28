@@ -31,12 +31,15 @@
       <% end %>
     </ul>
   </section>
-  <% if facade.is_auth? %>
-    <%= render partial: 'partials/github/repos', locals: {facade: facade} %>
-    <%= render partial: 'partials/github/relationships', locals: {facade: facade} %>
-  <% else %>
-    <%= button_to 'Connect to GitHub', github_login_path, class: 'btn btn-primary mb1 bg-teal' %>
-  <% end %>
+  <section>
+  <h1>Github</h1>
+    <% if facade.is_auth? %>
+      <%= render partial: 'partials/github/repos', locals: {facade: facade} %>
+      <%= render partial: 'partials/github/relationships', locals: {facade: facade} %>
+    <% else %>
+      <%= button_to 'Connect to Github', github_login_path, class: 'btn btn-primary mb1 bg-teal' %>
+    <% end %>
+  </section>
   <section>
     <h1>Invite Someone!</h1>
     <%= form_tag invite_path do %>
