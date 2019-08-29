@@ -2,7 +2,11 @@
 
 class UsersController < ApplicationController
   def show
-    render locals: { facade: DashboardFacade.new(current_user) }
+    if current_user
+      render locals: { facade: DashboardFacade.new(current_user) }
+    else
+      redirect_to login_path
+    end
   end
 
   def new
