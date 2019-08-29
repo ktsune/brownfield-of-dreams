@@ -16,7 +16,7 @@ feature 'User authenticates with oauth' do
 
         info: { :nickname => 'aurie' },
 
-        credentials: { token: '12354' }
+        credentials: { token: ENV['GITHUB_TOKEN'] }
     })
     # OmniAuth.config.mock_auth[:github]
     # OmniAuth.config.add_mock(:github, github_mock)
