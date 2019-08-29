@@ -46,21 +46,22 @@ feature 'User Sees Friends' do
 
     visit dashboard_path
 
-    within('#followers') do
+    within('.followers') do
+
       within('#follower-111') do
-        expect(page).to have_content('Add Friend')
+        expect(page).to have_button('Add Friend')
       end
       within('#follower-222') do
-        expect(page).to_not have_content('Add Friend')
+        expect(page).to_not have_button('Add Friend')
       end
       within('#follower-333') do
-        expect(page).to have_content('Add Friend')
+        expect(page).to have_button('Add Friend')
       end
       within('#follower-444') do
-        expect(page).to have_content('Add Friend')
+        expect(page).to have_button('Add Friend')
       end
       within('#follower-555') do
-        expect(page).to_not have_content('Add Friend')
+        expect(page).to_not have_button('Add Friend')
       end
     end
   end
