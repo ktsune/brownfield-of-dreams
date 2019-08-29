@@ -2,69 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://chromedriver.storage.googleapis.com/LATEST_RELEASE_76.0.3809
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-      Host:
-      - chromedriver.storage.googleapis.com
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Guploader-Uploadid:
-      - AEnB2UpG8f2hmmtD9_lKTOkOvZJO4Tje28yG3fOEqjqy0fHIezsD5JCp8AzrAr1or3EadgqEDQFasRUiAER5F9IOjPZBxXE13PrwXPzwHLJl91qKFkc-Gas
-      Expires:
-      - Sat, 24 Aug 2019 19:21:50 GMT
-      Date:
-      - Sat, 24 Aug 2019 18:21:50 GMT
-      Cache-Control:
-      - public, max-age=3600
-      Last-Modified:
-      - Tue, 20 Aug 2019 18:01:31 GMT
-      Etag:
-      - '"c49a33101c8d53f95def472744518541"'
-      X-Goog-Generation:
-      - '1566324091671879'
-      X-Goog-Metageneration:
-      - '1'
-      X-Goog-Stored-Content-Encoding:
-      - identity
-      X-Goog-Stored-Content-Length:
-      - '13'
-      Content-Type:
-      - text/plain
-      Content-Language:
-      - en
-      X-Goog-Hash:
-      - crc32c=DtTKZw==
-      - md5=xJozEByNU/ld70cnRFGFQQ==
-      X-Goog-Storage-Class:
-      - STANDARD
-      Accept-Ranges:
-      - bytes
-      Content-Length:
-      - '13'
-      Server:
-      - UploadServer
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="46,43,39"
-    body:
-      encoding: UTF-8
-      string: 76.0.3809.126
-    http_version: 
-  recorded_at: Sat, 24 Aug 2019 18:21:48 GMT
-- request:
-    method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key&part=snippet,contentDetails,statistics
+    uri: https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key=<YOUTUBE_API_KEY>&part=snippet,contentDetails,statistics
     body:
       encoding: US-ASCII
       string: ''
@@ -77,20 +15,22 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
+      Expires:
+      - Thu, 29 Aug 2019 17:03:18 GMT
+      Date:
+      - Thu, 29 Aug 2019 17:03:18 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"8jEFfXBrqiSrcF6Ee7MQuz8XuAM/k21QL43EHhkq-nusf4fBUDCjK2M"'
       Vary:
       - Origin
       - X-Origin
       Content-Type:
       - application/json; charset=UTF-8
-      Date:
-      - Sat, 24 Aug 2019 18:21:53 GMT
-      Expires:
-      - Sat, 24 Aug 2019 18:21:53 GMT
-      Cache-Control:
-      - private, max-age=0
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -107,18 +47,75 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         {
-         "error": {
-          "errors": [
-           {
-            "domain": "usageLimits",
-            "reason": "keyInvalid",
-            "message": "Bad Request"
+         "kind": "youtube#videoListResponse",
+         "etag": "\"8jEFfXBrqiSrcF6Ee7MQuz8XuAM/k21QL43EHhkq-nusf4fBUDCjK2M\"",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 1
+         },
+         "items": [
+          {
+           "kind": "youtube#video",
+           "etag": "\"8jEFfXBrqiSrcF6Ee7MQuz8XuAM/nvc-47Wb-2gTdUWC9pguTJ4t5Uw\"",
+           "id": "J7ikFUlkP_k",
+           "snippet": {
+            "publishedAt": "2018-07-23T20:59:59.000Z",
+            "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+            "title": "Rails Integration Tests for Pages with JavaScript",
+            "description": "This video shows how to write feature/integration tests within RSpec configured to run expectations for pages that run JavaScript.",
+            "thumbnails": {
+             "default": {
+              "url": "https://i.ytimg.com/vi/J7ikFUlkP_k/default.jpg",
+              "width": 120,
+              "height": 90
+             },
+             "medium": {
+              "url": "https://i.ytimg.com/vi/J7ikFUlkP_k/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+             },
+             "high": {
+              "url": "https://i.ytimg.com/vi/J7ikFUlkP_k/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+             },
+             "standard": {
+              "url": "https://i.ytimg.com/vi/J7ikFUlkP_k/sddefault.jpg",
+              "width": 640,
+              "height": 480
+             },
+             "maxres": {
+              "url": "https://i.ytimg.com/vi/J7ikFUlkP_k/maxresdefault.jpg",
+              "width": 1280,
+              "height": 720
+             }
+            },
+            "channelTitle": "Turing School of Software and Design",
+            "categoryId": "28",
+            "liveBroadcastContent": "none",
+            "localized": {
+             "title": "Rails Integration Tests for Pages with JavaScript",
+             "description": "This video shows how to write feature/integration tests within RSpec configured to run expectations for pages that run JavaScript."
+            }
+           },
+           "contentDetails": {
+            "duration": "PT16M16S",
+            "dimension": "2d",
+            "definition": "hd",
+            "caption": "false",
+            "licensedContent": false,
+            "projection": "rectangular"
+           },
+           "statistics": {
+            "viewCount": "183",
+            "likeCount": "2",
+            "dislikeCount": "0",
+            "favoriteCount": "0",
+            "commentCount": "0"
            }
-          ],
-          "code": 400,
-          "message": "Bad Request"
-         }
+          }
+         ]
         }
     http_version: 
-  recorded_at: Sat, 24 Aug 2019 18:21:51 GMT
+  recorded_at: Thu, 29 Aug 2019 17:03:15 GMT
 recorded_with: VCR 4.0.0

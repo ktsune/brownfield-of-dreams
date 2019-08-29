@@ -2,6 +2,7 @@
 
 class GithubService
   def initialize(user)
+    # binding.pry
     @conn = Faraday.new(url: 'https://api.github.com/') do |f|
       # f.headers['Authorization'] = "token #{ENV['GITHUB_TOKEN']}"
       f.basic_auth user.handle, user.token

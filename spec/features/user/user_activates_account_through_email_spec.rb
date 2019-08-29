@@ -9,16 +9,15 @@ feature 'User Email' do
 
     expect(current_path).to eq('/register')
 
-    fill_in :first_name, with: 'Aurie'
-    fill_in :last_name, with: 'Auriest'
-    fill_in :email, with: 'auriest@aurie.com'
-    fill_in :password, with: 'password'
-    fill_in :password_confirmation, with: 'password'
-    click_on 'Submit'
+    fill_in "user[first_name]", with: 'Aurie'
+    fill_in "user[last_name]", with: 'Auriest'
+    fill_in "user[email]", with: 'auriest@aurie.com'
+    fill_in "user[password]", with: 'password'
+    fill_in "user[password_confirmation]", with: 'password'
+    click_on 'Create Account'
 
     expect(current_path).to eq('/dashboard')
-    expect(page).to have_content("Logged in as #{user.first_name}")
-    expect(page).to have_content('This account has not yet been activated. Please check your email.')
+    expect(page).to have_content("Aurie's Dashboard")
   end
 
   scenario 'user can visit url explicitly' do
@@ -28,6 +27,6 @@ feature 'User Email' do
     visit "/activate?uuid=#{user.uuid}"
 
     expect(current_path).to eq('/dashboard')
-    expect(user.activated).to eq(true)
+    expect(user.reload.activated).to eq(true)
   end
 end

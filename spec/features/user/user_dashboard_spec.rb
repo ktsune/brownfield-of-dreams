@@ -4,18 +4,18 @@ require 'rails_helper'
 
 feature 'Github Repos' do
   scenario 'User can see 5 repos' do
-    user = create(:user, token: '12345')
+    user = create(:user, token: ENV['GITHUB_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     VCR.use_cassette('synopsis') do
       visit '/dashboard'
-    end
 
-    expect(current_path).to eq(dashboard_path)
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_css('.repo', count: 5)
 
-    expect(page).to have_css('.repo', count: 5)
-    within(first('.repo')) do
-      expect(page).to have_link('JoriPeterson/battleship')
+      within(first('.repo')) do
+        expect(page).to have_css('.name')
+      end
     end
   end
 end

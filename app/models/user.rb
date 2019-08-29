@@ -19,10 +19,11 @@ class User < ApplicationRecord
 
   def connect(data)
     self.attributes = {
-      uid: data.uid.to_s,
+      uid: data.uid.id.to_s,
       handle: data.info.nickname,
       token: data.credentials.token
     }
+    # binding.pry
     save
   end
 
