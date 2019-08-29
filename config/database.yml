@@ -81,3 +81,4 @@ test:
 production:
   <<: *default
   database: brownfield_development
+  url: <%= ENV['DATABASE_URL'] %>
