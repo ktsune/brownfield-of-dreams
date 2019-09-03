@@ -4,6 +4,7 @@ Brownfield of Dreams is a Ruby on Rails application used to organize YouTube con
 
 A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
 
+
 ### Intent
 ---
 
@@ -64,7 +65,6 @@ $ bundle exec rspec
 ```
 
 ## Technologies
----
 * [Stimulus](https://github.com/stimulusjs/stimulus)
 * [will_paginate](https://github.com/mislav/will_paginate)
 * [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
