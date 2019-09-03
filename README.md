@@ -4,6 +4,8 @@ Brownfield of Dreams is a Ruby on Rails application used to organize YouTube con
 
 A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
 
+## Visit our app on Heroku 
+https://shrouded-scrubland-16029.herokuapp.com
 
 ## Objective 
 
