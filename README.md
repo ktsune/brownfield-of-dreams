@@ -5,8 +5,7 @@ Brownfield of Dreams is a Ruby on Rails application used to organize YouTube con
 A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
 
 
-### Objective 
----
+## Objective 
 
 This group project was completed in 10 days as a requirement for Module 2 at Turing School of Software and Design.
 
@@ -21,19 +20,16 @@ The project was built using Rails which implements the following:
 - Prioritize what code is relevant to your immediate task (and ignore the rest)
 - Send email from a Rails application
 
-### Contributors
----
+## Contributors
 
 - Sarah Tatro 
 - Aurie Gochenour 
 
-### GitHub Repository
----
+## GitHub Repository
 
 https://github.com/ktsune/brownfield-of-dreams
 
-### Instructions 
----
+## Instructions 
 
 Clone down the repo
 ```
@@ -64,7 +60,7 @@ Run the test suite:
 $ bundle exec rspec
 ```
 
-## Technologies
+### Technologies
 * [Stimulus](https://github.com/stimulusjs/stimulus)
 * [will_paginate](https://github.com/mislav/will_paginate)
 * [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
@@ -74,6 +70,5 @@ $ bundle exec rspec
 * [chromedriver-helper](http://chromedriver.chromium.org/)
 
 ### Versions
----
 * Ruby 2.4.1
 * Rails 5.2.0
