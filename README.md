@@ -21,15 +21,18 @@ The project was built using Rails which implements the following:
 - Send email from a Rails application
 
 ### Contributors
+---
 
 - Sarah Tatro 
 - Aurie Gochenour 
 
 ### GitHub Repository
+---
 
 https://github.com/ktsune/brownfield-of-dreams
 
 ### Instructions 
+---
 
 Clone down the repo
 ```
@@ -61,6 +64,7 @@ $ bundle exec rspec
 ```
 
 ## Technologies
+---
 * [Stimulus](https://github.com/stimulusjs/stimulus)
 * [will_paginate](https://github.com/mislav/will_paginate)
 * [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
@@ -70,5 +74,6 @@ $ bundle exec rspec
 * [chromedriver-helper](http://chromedriver.chromium.org/)
 
 ### Versions
+---
 * Ruby 2.4.1
 * Rails 5.2.0
